@@ -3,19 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "echo \"Add linter in future\""
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Koa production-style demo",
   "devDependencies": {
-    "@types/node": "^22.9.0"
+    "@types/node": "^22.9.0",
+    "nodemon": "^3.0.1"
   },
   "dependencies": {
     "koa": "^2.15.3",
     "koa-body": "^6.0.1",
     "koa-router": "^13.0.1",
+    "koa-helmet": "^6.0.0",
+    "@koa/cors": "^4.0.0",
     "mongoose": "^8.15.1",
-    "sockjs": "^0.3.24"
+    "sockjs": "^0.3.24",
+    "dotenv": "^16.3.1"
   }
 }
