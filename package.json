@@ -1,18 +1,26 @@
 {
   "name": "koa-practice",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "dev": "nodemon --exec tsx src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "lint": "echo \"Add linter in future\""
   },
   "author": "",
   "license": "ISC",
   "description": "Koa production-style demo",
   "devDependencies": {
+    "@types/koa": "^3.0.2",
+    "@types/koa-router": "^7.4.9",
+    "@types/koa__cors": "^5.0.1",
     "@types/node": "^22.9.0",
-    "nodemon": "^3.0.1"
+    "@types/sockjs": "^0.3.36",
+    "nodemon": "^3.0.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
   },
   "dependencies": {
     "koa": "^2.15.3",
