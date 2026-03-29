@@ -1,10 +1,10 @@
-const http = require('http');
-const app = require('./app');
-const config = require('./config');
-const db = require('./db/mongoose');
-const createSocketServer = require('./webSocket/server');
+import http from 'http';
+import app from './app.js';
+import config from './config/index.js';
+import * as db from './db/mongoose.js';
+import createSocketServer from './webSocket/server.js';
 
-async function start() {
+async function start(): Promise<void> {
   await db.connect();
   console.log('MongoDB connected');
 

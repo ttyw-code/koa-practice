@@ -1,8 +1,10 @@
-async function requestLogger(ctx, next) {
+import type { Context, Next } from 'koa';
+
+async function requestLogger(ctx: Context, next: Next): Promise<void> {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ctx.status} - ${ms}ms`);
 }
 
-module.exports = requestLogger;
+export default requestLogger;

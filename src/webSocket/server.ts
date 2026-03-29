@@ -1,17 +1,20 @@
-const sockjs = require('sockjs');
+import sockjs from 'sockjs';
 
-function createSocketServer() {
+const SOCKJS_OPEN = 1;
+
+function createSocketServer(): sockjs.Server {
   const sockjsServer = sockjs.createServer({ prefix: '/sockjs' });
 
-  const connections = new Set();
-  sockjsServer.on('connection', (conn) => {
+  const connections = new Set<sockjs.Connection>();
+
+  sockjsServer.on('connection', (conn: sockjs.Connection) => {
     connections.add(conn);
     console.log('SockJS connected:', conn.id);
 
-    conn.on('data', (message) => {
+    conn.on('data', (message: string) => {
       console.log('Socket message:', message);
       connections.forEach((client) => {
-        if (client.readyState === sockjs.OPEN) {
+        if (client.readyState === SOCKJS_OPEN) {
           client.write(`Echo: ${message}`);
         }
       });
@@ -26,4 +29,4 @@ function createSocketServer() {
   return sockjsServer;
 }
 
-module.exports = createSocketServer;
+export default createSocketServer;
