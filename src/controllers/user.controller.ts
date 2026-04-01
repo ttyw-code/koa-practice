@@ -8,7 +8,7 @@ export async function getAllUsers(ctx: Context): Promise<void> {
 }
 
 export async function createUser(ctx: Context): Promise<void> {
-  const body = (ctx.request.body as Record<string, unknown>) || {};
+  const body = ((ctx.request as { body?: unknown }).body as Record<string, unknown>) || {};
   const { name, age, email } = body;
   if (typeof name !== 'string' || !name.trim()) {
     ctx.throw(400, 'name must be a non-empty string');

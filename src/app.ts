@@ -1,5 +1,5 @@
 import Koa from 'koa';
-import koaBody from 'koa-body';
+import koaBodyPackage from 'koa-body';
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import logger from './middlewares/requestLogger.js';
@@ -8,6 +8,7 @@ import notFound from './middlewares/notFound.js';
 import routes from './routes/index.js';
 
 const app = new Koa();
+const koaBody = (koaBodyPackage as { koaBody?: typeof koaBodyPackage }).koaBody ?? koaBodyPackage;
 
 app.use(errorHandler);
 app.use(helmet());
